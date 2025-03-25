@@ -1,1 +1,24 @@
+/* Given the reviews table, write a query to retrieve the average star rating for each product, grouped by month. 
+The output should display the month as a numerical value, product ID, and average star rating rounded to two decimal places. 
+Sort the output first by month and then by product ID. */
 
+SELECT 
+    MONTH(submit_date) AS Month,
+    product_id,
+    ROUND(AVG(stars), 2) AS Avg_Star_Rating
+FROM reviews
+GROUP BY MONTH(submit_date), product_id
+ORDER BY Month, product_id;
+
+/*
+Explanation:
+MONTH(submit_date) AS Month: Extracts the month from the submit_date column.
+
+AVG(stars): Calculates the average star rating.
+
+ROUND(..., 2): Rounds the average star rating to two decimal places.
+
+GROUP BY MONTH(submit_date), product_id: Groups results by month and product.
+
+ORDER BY Month, product_id: Sorts the output first by month and then by product ID.
+*/
